@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="25%" stop-color="#F0F7FF"/>
+      <stop offset="51%" stop-color="#ECF7FF"/>
+      <stop offset="76%" stop-color="#F9FBFF"/>
+      <stop offset="100%" stop-color="#EAEFFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <g fill="#9AA4B2" font-family="sans-serif" font-size="28" text-anchor="middle">
+    <text x="600" y="450">Imagem temporária</text>
+  </g>
+  <rect x="0.5" y="0.5" width="1199" height="899" fill="none" stroke="#D1D5DB"/>
+</svg>
