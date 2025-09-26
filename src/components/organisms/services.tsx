@@ -32,7 +32,7 @@ export function Services() {
 
   return (
     <Section>
-      <FadeIn id="servicos" className="space-y-6">
+      <FadeIn id="services" className="space-y-6">
         <SectionHeading>Serviços</SectionHeading>
         <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
           {siteConfig.services.map((s) => {

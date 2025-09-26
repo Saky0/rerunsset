@@ -10,11 +10,11 @@ import { Button } from "../ui/button";
 const skills: Skill[] = [
   // Core stack & expertise first (includes Ruby)
   { name: "Ruby on Rails", level: "Professional", icon: <Code2 className="w-5 h-5" /> },
-  { name: "React & Next.js", level: "Advanced", icon: <Globe className="w-5 h-5" /> },
-  { name: "JavaScript & TypeScript", level: "Advanced", icon: <Code2 className="w-5 h-5" /> },
+  { name: "React & Next.js", level: "Professional", icon: <Globe className="w-5 h-5" /> },
+  { name: "JavaScript & TypeScript", level: "Professional", icon: <Code2 className="w-5 h-5" /> },
   { name: "Git/GitHub", level: "Advanced", icon: <GitBranch className="w-5 h-5" /> },
   // Infra / banco / design
-  { name: "MySQL / PostgreSQL", level: "Intermediary", icon: <Database className="w-5 h-5" /> },
+  { name: "MySQL / PostgreSQL", level: "Advanced", icon: <Database className="w-5 h-5" /> },
   { name: "AWS / Vercel", level: "Intermediary", icon: <Globe className="w-5 h-5" /> },
   { name: "UI/UX (Figma)", level: "Intermediary", icon: <Palette className="w-5 h-5" /> },
   // Extras
@@ -31,7 +31,7 @@ export function About() {
   ] as const;
   return (
     <Section>
-      <FadeIn id="sobre" className="space-y-8 sm:space-y-12">
+      <FadeIn id="about" className="space-y-8 sm:space-y-12">
         <SectionHeading>Sobre mim</SectionHeading>
         {/* Header area: image on the left, info card on the right */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">

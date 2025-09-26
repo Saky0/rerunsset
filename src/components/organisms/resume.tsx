@@ -33,7 +33,7 @@ export function Resume() {
   };
   return (
     <Section>
-      <FadeIn id="curriculo" className="space-y-6">
+      <FadeIn id="resume" className="space-y-6">
         <SectionHeading>Currículo</SectionHeading>
         <div className="grid md:grid-cols-2 gap-8">
           {/* Educação */}

@@ -10,7 +10,7 @@ export function Hero() {
   const typed = useTypewriter(siteConfig.brand.roleAlternatives, 60, 1000);
 
   return (
-    <Section className="mt-3 sm:mt-10">
+    <Section id="home" className="mt-3 sm:mt-10">
       <FadeIn className="flex flex-col-reverse md:flex-row items-center gap-10">
         <div className="flex-1 w-full flex flex-col max-md:justify-center max-md:items-center max-md:text-center">  
           <h1 className="group text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">

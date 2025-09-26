@@ -116,12 +116,23 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+    scroll-behavior: smooth;
   }
 }
 
 /* Extra helpers */
-.text-muted-foreground { color: var(--muted-foreground); }
-a { text-decoration: none; }
-a:hover { text-decoration: underline; text-underline-offset: 2px; }
+.text-muted-foreground {
+  color: var(--muted-foreground);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
