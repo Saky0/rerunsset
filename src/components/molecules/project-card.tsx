@@ -1,5 +1,4 @@
 import { SafeImage } from "@/components/atoms/safe-image";
-import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -25,9 +24,9 @@ export function ProjectCard({ title, image, url, tags = [] }: Props) {
             ))}
           </div>
         )}
-        <Link href={url} target="_blank" rel="noopener noreferrer" className="text-sm underline">
+        <a href={url} target="_blank" rel="noopener noreferrer" className="text-sm underline">
           Visualizar
-        </Link>
+        </a>
       </CardContent>
     </Card>
   );

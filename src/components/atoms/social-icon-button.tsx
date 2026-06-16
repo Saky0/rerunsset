@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { ReactNode } from "react";
 import { SafeImage } from "@/components/atoms/safe-image";
 
@@ -14,7 +13,7 @@ type Props = {
 export function SocialIconButton({ href, ariaLabel, iconSrc, icon, size = 42 }: Props) {
   const inner = size - 4; // account for 2px gradient border (padding)
   return (
-    <Link
+    <a
       href={href}
       aria-label={ariaLabel}
       target="_blank"
@@ -32,6 +31,6 @@ export function SocialIconButton({ href, ariaLabel, iconSrc, icon, size = 42 }: 
           icon
         )}
       </span>
-    </Link>
+    </a>
   );
 }
