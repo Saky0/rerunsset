@@ -10,6 +10,7 @@ import { ScreenContent } from "./screen-content";
 
 type Props = {
   scene: NotebookSceneId;
+  presentation?: NotebookSceneId;
   progress: number;
 };
 
@@ -28,18 +29,19 @@ const poses: Record<NotebookSceneId, Pose> = {
     pedestalX: 0.28,
   },
   about: {
-    position: [-0.34, 0.04, 0],
-    rotation: [0.08, 0.42, -0.05],
+    position: [-0.1, 0.04, 0],
+    rotation: [0.08, 0.36, -0.05],
     lid: -0.18,
-    pedestalX: -0.28,
+    pedestalX: -0.1,
   },
 };
 
-export function NotebookModel({ scene, progress }: Props) {
+export function NotebookModel({ scene, presentation = scene, progress }: Props) {
   const root = useRef<Group>(null);
   const lid = useRef<Group>(null);
   const pedestal = useRef<Group>(null);
   const currentPose = useMemo(() => poses[scene], [scene]);
+  const displayScale = presentation === "about" ? 1.08 : 0.82;
 
   useFrame((state, delta) => {
     if (!root.current || !lid.current || !pedestal.current) {
@@ -64,7 +66,7 @@ export function NotebookModel({ scene, progress }: Props) {
   });
 
   return (
-    <group scale={0.84}>
+    <group scale={displayScale}>
       <group ref={pedestal} position={[poses.hero.pedestalX, -2.15, 0.15]}>
         <RoundedBox args={[6.3, 2.2, 4.05]} radius={0.08} smoothness={5} receiveShadow castShadow>
           <meshStandardMaterial color="#090b11" metalness={0.24} roughness={0.92} />

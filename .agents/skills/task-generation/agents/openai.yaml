@@ -1,0 +1,4 @@
+interface:
+  display_name: "Task Generation"
+  short_description: "Create feature tasks with goals and review"
+  default_prompt: "Use $task-generation to create a concise feature task with goal, specs, checklist, and review."

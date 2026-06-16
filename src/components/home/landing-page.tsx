@@ -29,13 +29,13 @@ import {
   Workflow,
 } from "lucide-react";
 import { ClientNotebookExperience, ClientShaderBackdrop } from "@/components/home/client-lazy";
+import { NotebookVisual } from "@/components/home/notebook-visual";
 import { Reveal, RevealSection } from "@/components/home/reveal";
 import {
   aboutHighlights,
   education,
   experience,
   navItems,
-  projects,
   services,
   technologyCategories,
   type Accent,
@@ -44,6 +44,7 @@ import {
 import { cn } from "@/lib/utils";
 import { copyrightYear } from "@/content/brand";
 import { contactData } from "@/lib/data/contact";
+import { siteConfig } from "@/content/site";
 
 const iconMap = {
   barChart3: BarChart3,
@@ -194,18 +195,22 @@ function Hero() {
 
       <div className="hidden min-h-[38rem] lg:block" aria-hidden />
 
-      <Reveal className="hero-stage lg:hidden" delay={0.08}>
-        <div className="hero-glow hero-glow-blue" />
-        <div className="hero-glow hero-glow-red" />
-        <Image
-          src="/hero_3d_mockup.png"
-          alt="Mockup 3D de uma landing page escura da Rerunsset em uma tela premium"
-          width={1080}
-          height={810}
-          priority
-          className="hero-mockup"
-        />
-        <span className="hero-line" />
+      <Reveal className="lg:hidden" delay={0.08}>
+        <NotebookVisual scene="hero" presentation="hero" className="hero-stage hero-mobile-visual">
+          <div className="hero-mobile-fallback">
+            <div className="hero-glow hero-glow-blue" />
+            <div className="hero-glow hero-glow-red" />
+            <Image
+              src="/hero_3d_mockup.png"
+              alt="Mockup 3D de uma landing page escura da Rerunsset em uma tela premium"
+              width={1080}
+              height={810}
+              priority
+              className="hero-mockup"
+            />
+            <span className="hero-line" />
+          </div>
+        </NotebookVisual>
       </Reveal>
     </section>
   );
@@ -231,31 +236,31 @@ function TrustedBy() {
 function About() {
   return (
     <SectionShell id="about" className="about-grid" data-notebook-section="about">
-      <div className="hidden min-h-[40rem] lg:block" aria-hidden />
-
-      <div className="about-portrait lg:hidden">
-        <div className="about-stat about-stat-top">
-          <UserRound className="size-6" />
-          <strong>+4</strong>
-          <span>anos de experiência</span>
+      <NotebookVisual scene="about" presentation="about" progress={0.72} className="about-visual">
+        <div className="about-portrait">
+          <div className="about-stat about-stat-top">
+            <UserRound className="size-6" />
+            <strong>+4</strong>
+            <span>anos de experiência</span>
+          </div>
+          <div className="about-stat about-stat-bottom">
+            <BriefcaseBusiness className="size-6" />
+            <strong>10+</strong>
+            <span>projetos entregues</span>
+          </div>
+          <span className="portrait-orbit portrait-orbit-blue" />
+          <span className="portrait-orbit portrait-orbit-red" />
+          <Image
+            src="/davi_dark_portrait_cutout.png"
+            alt="Davi Mattos sorrindo com camisa preta e braços cruzados"
+            width={864}
+            height={1080}
+            className="portrait-image"
+          />
         </div>
-        <div className="about-stat about-stat-bottom">
-          <BriefcaseBusiness className="size-6" />
-          <strong>10+</strong>
-          <span>projetos entregues</span>
-        </div>
-        <span className="portrait-orbit portrait-orbit-blue" />
-        <span className="portrait-orbit portrait-orbit-red" />
-        <Image
-          src="/davi_dark_portrait_cutout.png"
-          alt="Davi Mattos sorrindo com camisa preta e braços cruzados"
-          width={864}
-          height={1080}
-          className="portrait-image"
-        />
-      </div>
+      </NotebookVisual>
 
-      <div className="relative z-10">
+      <div className="about-copy relative z-10">
         <Eyebrow>Sobre mim</Eyebrow>
         <h2 className="mt-4 text-[2.25rem] font-black leading-[1.03] text-white md:text-[3rem]">
           Mais que código. Estratégia, design e <span className="text-gradient-red">performance.</span>
@@ -311,6 +316,8 @@ function CaseCardMedia({
   return (
     <a
       href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className="group relative block aspect-[16/9.4] overflow-hidden rounded-[18px] border border-white/8 bg-[#080b12]"
       aria-label={`Ver case ${title}`}
     >
@@ -371,22 +378,24 @@ function CaseAction({
   }
 
   return (
-    <a href={href} className={className}>
+    <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
       {content}
     </a>
   );
 }
 
-function CaseCard({ project }: { project: (typeof projects)[number] }) {
+function CaseCard({ project }: { project: (typeof siteConfig.projects)[number] }) {
+  const repoHref = project.isPrivateRepo ? undefined : project.githubUrl;
+
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-white/8 bg-[linear-gradient(180deg,rgba(18,24,36,0.88),rgba(8,12,20,0.96))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition duration-300 hover:-translate-y-1 hover:border-white/14 hover:shadow-[0_18px_42px_rgba(0,0,0,0.24)]">
-      <CaseCardMedia title={project.title} image={project.image} href={project.href} />
+      <CaseCardMedia title={project.title} image={project.image} href={project.url} />
 
       <div className="flex flex-1 flex-col gap-5 px-2 pb-2 pt-5">
         <div className="space-y-3">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.13em] text-white/80">{project.title}</p>
-            <h3 className="mt-2 text-[1.12rem] font-semibold leading-6 text-white">{project.category}</h3>
+            <p className="text-xs font-black uppercase tracking-[0.13em] text-white/80">Case</p>
+            <h3 className="mt-2 text-[1.12rem] font-semibold leading-6 text-white">{project.title}</h3>
             <p className="mt-2 text-sm leading-6 text-slate-400">{project.description}</p>
           </div>
           <CaseCardTags tags={project.tags} />
@@ -394,11 +403,11 @@ function CaseCard({ project }: { project: (typeof projects)[number] }) {
 
         <div className="mt-auto">
           <div className="grid gap-3 sm:grid-cols-2">
-            <CaseAction href={project.href} label="Visualizar" icon={ArrowUpRight} />
-            <CaseAction href={project.repoHref} label="Código" icon={Github} disabled={!project.repoHref} />
+            <CaseAction href={project.url} label="Visualizar" icon={ArrowUpRight} />
+            <CaseAction href={repoHref} label="Código" icon={Github} disabled={project.isPrivateRepo || !repoHref} />
           </div>
           <p className="mt-2 text-center text-[11px] text-slate-500 sm:text-right">
-            {project.repoLabel ?? "Repositório privado"}
+            {project.isPrivateRepo ? "Repositório privado" : "Código disponível"}
           </p>
         </div>
       </div>
@@ -423,7 +432,7 @@ function Cases() {
         }
       />
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {projects.map((project, index) => (
+        {siteConfig.projects.map((project, index) => (
           <Reveal key={project.title} className="h-full" delay={Math.min(index * 0.04, 0.16)}>
             <CaseCard project={project} />
           </Reveal>
@@ -700,7 +709,7 @@ export function LandingPage() {
     <>
       <ClientShaderBackdrop />
       <Header />
-      <main className="relative z-10 overflow-hidden">
+      <main className="relative z-10 overflow-x-clip overflow-y-visible">
         <HeroAboutJourney />
         <div className="mx-auto grid max-w-[1548px] gap-6 px-5 py-6 md:px-10">
           <Cases />

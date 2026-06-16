@@ -1,0 +1,4 @@
+interface:
+  display_name: "Live Docs"
+  short_description: "Keep component notes brief and docs deep"
+  default_prompt: "Use $live-docs to update concise component docs and route broader documentation to /docs."
